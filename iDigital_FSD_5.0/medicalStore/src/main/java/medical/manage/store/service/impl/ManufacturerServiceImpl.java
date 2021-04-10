@@ -29,7 +29,8 @@ public class ManufacturerServiceImpl implements ManufacturerService {
 
 	@Override
 	public void deleteManufacturer(int id) {
-		manufacturerRepo.deleteById(id);
+		Manufacturer manufacturer=manufacturerRepo.findByManufacturerId(id);
+		manufacturerRepo.deleteById(manufacturer.getManufacturerId());;
 	}
 
 	@Override
