@@ -77,7 +77,7 @@ public class ManufacturerServiceTest {
 
 		Mockito.when(manufacturerService.addManufacturer(manufacturer)).thenReturn(manufacturerCheck);
 		assertEquals(1, manufacturerCheck.getManufacturerId());
-		assertEquals("Metformin", manufacturerCheck.getMfgLicence());
+		assertEquals("Metamorfene", manufacturerCheck.getMfgLicence());
 
 	}
 
@@ -116,7 +116,7 @@ public class ManufacturerServiceTest {
 		manufacturerCheck.setManufacturerId(10007);
 		manufacturerCheck.setMfgLicence("hqt37832057");
 
-	   Mockito.when(manufacturerService.updateManufacturerDetails(10007,manufacturer)).thenReturn(manufacturerCheck);
+	   Mockito.when(manufacturerService.updateManufacturerDetails(manufacturer)).thenReturn(manufacturerCheck);
 		
 		assertEquals(6, manufacturerCheck.getManufacturerId());
 		assertEquals("Metformin", manufacturerCheck.getMfgLicence());
