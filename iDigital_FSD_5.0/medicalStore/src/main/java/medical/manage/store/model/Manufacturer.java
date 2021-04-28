@@ -1,14 +1,21 @@
 package medical.manage.store.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.Pattern;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import medical.manage.store.constants.MedicalStoreConstants;
 
 @Entity(name = "manufacturer")
@@ -18,16 +25,20 @@ public class Manufacturer {
 	@Id
 	@GeneratedValue(strategy= GenerationType.SEQUENCE, generator="seq")
 	@SequenceGenerator(name="seq", initialValue=10001, allocationSize=1)
+	@ApiModelProperty(notes = "The Id value of manufacturer")
 	@Column(name = "manufacturer_id")
 	private int manufacturerId;
 
+	@ApiModelProperty(notes = "The name of manufacturer")
 	@Column(name = "manufacturer_name")
 	private String manufacturerName;
 
 	@Pattern(regexp = MedicalStoreConstants.LICENCE_CHECK, message = MedicalStoreConstants.LICENCE_MESSAGE)
+	@ApiModelProperty(notes = "The manufacturing license number of manufacturer")
 	@Column(name = "mfgLicence")
 	private String mfgLicence;
 
+	@ApiModelProperty(notes = "The address of manufacturer")
 	@Column(name = "address")
 	private String address;
 

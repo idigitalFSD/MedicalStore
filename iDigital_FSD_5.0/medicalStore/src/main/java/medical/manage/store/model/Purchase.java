@@ -31,10 +31,10 @@ public class Purchase {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
-	private Admin admin;
+	private AdminToAdmin admin;
 
 	// Parameterized constructor
-	public Purchase(LocalDate purchaseDate, double amountPaid, String status, Admin admin) {
+	public Purchase(LocalDate purchaseDate, double amountPaid, String status, AdminToAdmin admin) {
 		super();
 		this.purchaseDate = purchaseDate;
 		this.amountPaid = amountPaid;
@@ -75,11 +75,11 @@ public class Purchase {
 		this.status = status;
 	}
 
-	public Admin getAdmin() {
+	public AdminToAdmin getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(Admin admin) {
+	public void setAdmin(AdminToAdmin admin) {
 		this.admin = admin;
 	}
 

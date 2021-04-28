@@ -7,7 +7,6 @@ import medical.manage.store.model.Manufacturer;
 
 @Repository
 public interface ManufacturerRepository extends JpaRepository<Manufacturer, Integer> {
-	
-	public Manufacturer findByManufacturerId(int id);
 
+	public Manufacturer findByManufacturerId(int id);
 }

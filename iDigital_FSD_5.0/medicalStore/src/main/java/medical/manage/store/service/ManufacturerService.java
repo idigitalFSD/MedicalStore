@@ -12,6 +12,6 @@ public interface ManufacturerService {
 
 	void deleteManufacturer(int id);
 
-	Manufacturer updateManufacturerDetails(int id, Manufacturer manufacturer);
+	Manufacturer updateManufacturerDetails(Manufacturer manufacturer);
 
 }

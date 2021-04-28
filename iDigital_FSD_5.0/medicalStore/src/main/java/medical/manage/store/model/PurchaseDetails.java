@@ -30,7 +30,7 @@ public class PurchaseDetails {
 	@Column(name = "input_medicine_id")
 	private int inputMedicineId;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Purchase purchase;
 

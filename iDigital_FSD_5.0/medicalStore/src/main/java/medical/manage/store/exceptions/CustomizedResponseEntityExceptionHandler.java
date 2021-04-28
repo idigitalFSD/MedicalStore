@@ -80,4 +80,32 @@ public class CustomizedResponseEntityExceptionHandler  extends ResponseEntityExc
 			return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
 		}
 
+		@ExceptionHandler(value = { Exception.class })
+		public ResponseEntity<Object> handleAnyRequest(Exception ex, WebRequest request) {
+			String errorDescription = ex.getLocalizedMessage();
+
+			if (errorDescription == null) {
+				errorDescription = ex.toString();
+			}
+
+			ErrorMessage errorMessage = new ErrorMessage(errorDescription, new Date(),request.getDescription(false));
+
+			return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+
+		}
+		
+		@ExceptionHandler(value = { NullPointerException.class })
+		public ResponseEntity<Object> handleNullpointerException(NullPointerException ex, WebRequest request) {
+			String errorDescription = ex.getLocalizedMessage();
+
+			if (errorDescription == null) {
+				errorDescription = ex.toString();
+			}
+
+			ErrorMessage errorMessage = new ErrorMessage(errorDescription, new Date(),request.getDescription(false));
+
+			return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
+
+		}
+		
 }

@@ -1,6 +1,8 @@
 package medical.manage.store.controller;
 
-import java.util.List; 
+import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,16 +21,17 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import medical.manage.store.exception.ResourceNotFoundException;
+import medical.manage.store.exceptions.ResourceNotFoundException;
 import medical.manage.store.model.Manufacturer;
 import medical.manage.store.repository.ManufacturerRepository;
 import medical.manage.store.service.ManufacturerService;
+import medical.manage.store.utils.Message;
 
 @Api(description="This is Manufacturer Controller Responsible for different "
 		+ "database operations on manufacturer.")
 @CrossOrigin(origins="http://localhost:3000")
 @RestController
-@RequestMapping(value = "/manufacturer")
+@RequestMapping("/api/v1/medicalstore/manufacturer")
 public class ManufacturerController {
 	
 	@Autowired
@@ -83,15 +86,22 @@ public class ManufacturerController {
 	}
 
 	// Updating Manufacturer information
-
-	@PutMapping(value = "/update_manufacturer/{id}")
+	
 	@ApiOperation("This will update manufacturer details.")
-	public ResponseEntity<String> updateManufacturerDetails(@ApiParam("Need to provide "
-			+ "manufacturer ID.")@PathVariable int id, 
-			@ApiParam("Need to provide manufacturer details.")@RequestBody Manufacturer manufacturer) {
-		manufacturerService.updateManufacturerDetails(id, manufacturer);
-		return new ResponseEntity<String>("Manufacturer's information updated successfully.", 
-				HttpStatus.OK);
+	@PutMapping("/update_manufacturer")
+	public Message modify(@Valid @RequestBody Manufacturer manufacturer) {
+		manufacturerService.updateManufacturerDetails(manufacturer);
+		return new Message("Successfully modified !");
 	}
+
+//	@PutMapping(value = "/update_manufacturer/{id}")
+//	@ApiOperation("This will update manufacturer details.")
+//	public ResponseEntity<String> updateManufacturerDetails(@ApiParam("Need to provide "
+//			+ "manufacturer ID.")@PathVariable int id, 
+//			@ApiParam("Need to provide manufacturer details.")@RequestBody Manufacturer manufacturer) {
+//		manufacturerService.updateManufacturerDetails(id, manufacturer);
+//		return new ResponseEntity<String>("Manufacturer's information updated successfully.", 
+//				HttpStatus.OK);
+//	}
 
 }

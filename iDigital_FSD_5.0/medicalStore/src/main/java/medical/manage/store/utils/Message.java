@@ -2,11 +2,11 @@ package medical.manage.store.utils;
 
 import java.util.List;
 
-import medical.manage.store.model.Medicine;
+import medical.manage.store.model.MedicinePurchased;
 public class Message {
 	
 	String text;
-	List<Medicine> medicines;
+	List<MedicinePurchased> medicines;
 	
 	
 	public Message() {
@@ -31,12 +31,12 @@ public class Message {
 	}
 
 
-	public List<Medicine> getMedicines() {
+	public List<MedicinePurchased> getMedicines() {
 		return medicines;
 	}
 
 
-	public void setMedicines(List<Medicine> medicines) {
+	public void setMedicines(List<MedicinePurchased> medicines) {
 		this.medicines = medicines;
 	}
 
