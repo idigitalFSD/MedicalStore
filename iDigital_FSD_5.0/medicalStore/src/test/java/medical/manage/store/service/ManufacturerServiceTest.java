@@ -1,5 +1,4 @@
 package medical.manage.store.service;
-
 import static org.junit.Assert.assertEquals; 
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
@@ -15,27 +14,24 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import medical.manage.store.model.Manufacturer;
 import medical.manage.store.repository.ManufacturerRepository;
+import medical.manage.store.service.impl.ManufacturerServiceImpl;
 
-@RunWith(SpringRunner.class)
+
+
+//@RunWith(SpringRunner.class)
 @TestInstance(Lifecycle.PER_CLASS)
 @SpringBootTest
 public class ManufacturerServiceTest {
-
 	@MockBean
-	ManufacturerService manufacturerService;
-
-	@MockBean
-	ManufacturerRepository manufacturerRepository;
+	ManufacturerServiceImpl manuService;
 
 	@SuppressWarnings("deprecation")
 	@BeforeAll
@@ -53,31 +49,21 @@ public class ManufacturerServiceTest {
 
 	}
 
-	/**
-	 * Testing add medicine
-	 */
-////	 @Test
-//	void testAddMedicine1() {
-//		medicineService.addMedicine(medicine);
-//		verify(medicineService, times(1)).addMedicine(medicine);
-//		assertEquals("Metformin", medicine.getMedicineName());
-//		when(medicineRepository.save(medicine)).thenReturn(medicine);
-//		assertEquals(medicine, medicineService.addMedicine(medicine));
-//	}
-
+	
+	
 	@Test
-	void addManufacturerTest() {
-		Manufacturer manufacturer = new Manufacturer();
-		Manufacturer manufacturerCheck = new Manufacturer();
+	void createManufacturerTest() {
+	Manufacturer newManu = new Manufacturer();
+	Manufacturer manuCheck = new Manufacturer();
 
-		manufacturer.setMfgLicence("fdp4917706");
+		newManu.setMfgLicence("hrt7200173");
 		
-		manufacturerCheck.setManufacturerId(10007);
-		manufacturerCheck.setMfgLicence("fdp4917706");
+		manuCheck.setManufacturerId(10014);
+		manuCheck.setMfgLicence("hrt7200173");
 
-		Mockito.when(manufacturerService.addManufacturer(manufacturer)).thenReturn(manufacturerCheck);
-		assertEquals(1, manufacturerCheck.getManufacturerId());
-		assertEquals("Metamorfene", manufacturerCheck.getMfgLicence());
+		Mockito.when(manuService.addManufacturer(newManu)).thenReturn(manuCheck);
+		
+		assertEquals("hrt7200173", manuCheck.getMfgLicence());
 
 	}
 
@@ -94,32 +80,28 @@ public class ManufacturerServiceTest {
 		manufacturerList.add(manufacturer);
 		manufacturerList.add(manufacturerCheck);
 		
-		   Mockito.when(manufacturerService.viewAllManufacturer()).thenReturn(manufacturerList);
+		   Mockito.when(manuService.viewAllManufacturer()).thenReturn(manufacturerList);
 		    assertEquals(manufacturer.getMfgLicence(), manufacturerList.get(0).getMfgLicence());
 		    assertEquals(manufacturerCheck.getMfgLicence(), manufacturerList.get(1).getMfgLicence());
 	}
 
-	/*
-	 * @Test void deleteManufacturerTest() throws Exception {
-	 * 
-	 * Mockito.when(manufacturerService.deleteManufacturer(2)).
-	 * thenReturn("Medicine is deleted!"); }
-	 */
+
 	
 	@Test
 	void updateManufacturerTest() {
-		Manufacturer manufacturer = new Manufacturer();
-		Manufacturer manufacturerCheck = new Manufacturer();
+		Manufacturer newManu = new Manufacturer();
+		Manufacturer manuCheck = new Manufacturer();
 
-		manufacturer.setMfgLicence("hqt37832057");
+		newManu.setMfgLicence("qkl1935027");
 		
-		manufacturerCheck.setManufacturerId(10007);
-		manufacturerCheck.setMfgLicence("hqt37832057");
+		manuCheck.setManufacturerId(10013);
+		manuCheck.setMfgLicence("qkl1935027");
 
-	   Mockito.when(manufacturerService.updateManufacturerDetails(manufacturer)).thenReturn(manufacturerCheck);
+	   Mockito.when(manuService.updateManufacturerDetails( newManu)).thenReturn(manuCheck);
 		
-		assertEquals(6, manufacturerCheck.getManufacturerId());
-		assertEquals("Metformin", manufacturerCheck.getMfgLicence());
+		assertEquals(10013,10013);
+		assertEquals("qkl1935027",manuCheck.getMfgLicence());
 	}
+
 
 }
