@@ -9,4 +9,5 @@ import medical.manage.store.model.Admin;
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
   //testing
 //  cheking webhooks
+  // last check
 }
