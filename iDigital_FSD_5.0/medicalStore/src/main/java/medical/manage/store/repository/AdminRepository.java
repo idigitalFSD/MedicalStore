@@ -7,5 +7,6 @@ import medical.manage.store.model.Admin;
 
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
+  //testing
 
 }
